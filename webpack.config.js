@@ -43,6 +43,9 @@ module.exports = {
                 ['@babel/preset-env', { targets: "defaults" }]
               ],
               cacheDirectory: true,
+              plugins: [
+		 ["@babel/transform-runtime"]
+	      ],
             }
           },
           { loader: 'eslint-loader'}

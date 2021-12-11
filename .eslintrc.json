@@ -11,5 +11,10 @@
     "parserOptions": {
         "ecmaVersion": 13,
         "sourceType": "module"
+    },
+    "rules": {
+       "no-undef": "off",
+       "no-console": "off",
+       "import/no-extraneous-dependencies": "off"
     }
 }
