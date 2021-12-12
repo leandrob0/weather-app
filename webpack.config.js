@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
- mode: "development",
+ mode: 'development',
  entry: './src/index.js',
  output: {
    filename: 'bundle.js',
@@ -16,21 +16,31 @@ module.exports = {
  plugins: [
     new HtmlWebpackPlugin({
       title: 'Weathery',
+      favicon: './src/favicon.ico'
     }),
  ], 
  module: {
-   rules: [    
+   rules: [   
      {
        test: /\.css$/i,
        use: ['style-loader', 'css-loader'],
      },
      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
         type: 'asset/resource',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
       },
       {
         test: /\.m?js$/,
@@ -48,9 +58,12 @@ module.exports = {
 	      ],
             }
           },
-          { loader: 'eslint-loader'}
+          { loader: 'eslint-loader'},
         ]
-      }
+      },
     ],
   },
+  resolve: {
+            extensions: ['', '.js', '.jsx', '.css']
+        }
 };
