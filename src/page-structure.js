@@ -1,20 +1,30 @@
 import "./styles.css";
-import { getCityTemp } from "./api-functions";
 
 function createSearchBar() {
-  // create the search bar.
+  const body = document.querySelector("body");
+  const containerBar = document.createElement('div');
+  const form = document.createElement('form');
+  const button = document.createElement('button');
+  const input = document.createElement('input');
+
+  containerBar.setAttribute('id','search-bar');
+  form.setAttribute('id','form-bar');
+  button.setAttribute('id','button-bar');
+  containerBar.setAttribute('id','search-bar');
+  input.setAttribute('id','input-bar');
+  input.setAttribute('type','text');
+  input.setAttribute('minlength','2');
+  input.setAttribute('placeholder','Enter the city name');
+
+  button.textContent = 'SEARCH';
+
+  body.appendChild(form);
+  form.appendChild(containerBar);
+  containerBar.appendChild(input);
+  containerBar.appendChild(button);
 }
 
-async function createWeatherHtml(location) {
-  const data = await getCityTemp(location);
-
-  if (data === undefined) {
-    console.log("city invalid");
-    return;
-  }
-
-  console.log(data);
-
+function createWeatherHtml() {
   const body = document.querySelector("body");
   const container = document.createElement("div");
   const top = document.createElement("div"); // where the city name and weather condition will go.
@@ -28,9 +38,6 @@ async function createWeatherHtml(location) {
   city.classList.add("city-text");
   condition.classList.add("condition-text");
 
-  city.innerText = data.location;
-  condition.innerText = data.condition;
-
   body.appendChild(container);
   container.appendChild(top);
   container.appendChild(bottom);
@@ -38,5 +45,13 @@ async function createWeatherHtml(location) {
   top.appendChild(condition);
 }
 
+function fillWeatherHtml(data) {
+  const city = document.querySelector('.city-text');
+  const condition = document.querySelector('.condition-text');
+
+  city.innerText = data.location;
+  condition.innerText = data.condition;
+}
+
 /* eslint-disable import/prefer-default-export */
-export { createWeatherHtml, createSearchBar };
+export { createWeatherHtml, createSearchBar , fillWeatherHtml };

@@ -2,7 +2,7 @@
 
 function processData(data) {
   const finalData = {
-    location: `${data.name.toUpperCase()}, ${data.sys.country}`,
+    location: `${data.name}, ${data.sys.country}`,
     condition: data.weather[0].description,
     feelsLike: data.main.feels_like,
     currentTemp: data.main.temp,

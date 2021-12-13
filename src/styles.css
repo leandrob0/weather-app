@@ -17,30 +17,110 @@ body {
   height: 100%;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  gap: 100px;
 
   font-family: "Raleway", "Courier New", Courier, monospace;
 }
 
+/*
+
+  STYLING FOR THE WEATHER DATA.
+
+*/
 .container-weather {
-  background-color: #ffffff10;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   overflow: auto;
 }
 
 .container-texts {
   color: white;
-  font-weight: 400;
 }
 
 .city-text {
   margin: 0;
   padding: 3px;
+  padding-bottom: 0;
 }
 
-.condition-text {
+h3.condition-text {
   margin: 0;
   padding: 3px;
+  padding-top: 0;
+}
+
+/*
+
+  STYLING FOR THE SEARCH BAR.
+
+*/
+#search-bar {
+  display: flex;
+  align-items: center;
+}
+
+#form-bar {
+  background-color: #ffffff15;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 100px;
+}
+
+#input-bar {
+  border: none;
+  border-radius: 10px;
+
+  background-color: #ffffff00;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+
+  display: block;
+
+  width: 25rem;
+  padding: 5px;
+  padding-right: 0;
+  margin: 0;
+}
+
+input::placeholder {
+  color: white;
+}
+
+input:focus {
+  outline: none;
+}
+
+#button-bar {
+  background-color: transparent;
+  
+  border: none;
+  border-radius: 10px;
+
+  padding: 5px;
+  margin:0;
+
+  color: white;
+
+  transition: ease-in-out 0.2s
+}
+
+#button-bar:hover {
+  transform: scale(1.1);
+}
+
+/*
+
+  MEDIA QUERIES
+
+*/
+
+@media only screen and (max-width: 600px) {
+  #input-bar {
+    width: 15rem;
+  }
 }
