@@ -36,18 +36,50 @@ body {
 
 .container-texts {
   color: white;
+  padding-bottom: 5px;
+  word-break: break-all;
 }
 
 .city-text {
   margin: 0;
-  padding: 3px;
+  padding: 5px;
   padding-bottom: 0;
 }
 
 h3.condition-text {
   margin: 0;
-  padding: 3px;
+  padding: 5px;
   padding-top: 0;
+  padding-bottom: 0;
+}
+
+.container-numbers {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  font-weight: bolder;
+}
+
+#degrees {
+  display: flex;
+  margin-right: 20px;
+}
+
+#number-degrees {
+  margin: 0;
+
+  font-size: 5rem;
+}
+
+#unit-degrees {
+  font-size: 1rem;
+}
+
+#details-weather {
+  margin-left: 20px;
 }
 
 /*
@@ -122,5 +154,19 @@ input:focus {
 @media only screen and (max-width: 600px) {
   #input-bar {
     width: 15rem;
+  }
+  @media (max-width: 300px) { 
+    #input-bar {
+      width: 5rem;
+    }
+    .container-weather {
+      font-size: 75%;
+    }
+  }
+}
+
+@media only screen and (max-height: 600px) {
+  body {
+    gap: 50px;
   }
 }

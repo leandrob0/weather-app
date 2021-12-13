@@ -15,6 +15,36 @@ async function getDataAndPopulate(location) {
     }
 }
 
+function validateInput(userInput) {
+    if(!userInput) {
+        return 0;
+    }
+
+    return 1;
+}
+
 createSearchBar();
 createWeatherHtml();
 getDataAndPopulate('London');
+
+const button = document.querySelector("#button-bar");
+const input = document.querySelector("#input-bar");
+
+// this just makes the page not reload when pressing enter but cant make it work to search.
+input.setAttribute("onkeydown", "return (event.keyCode!=13);");
+
+button.addEventListener('click', () => {
+    const inputValue = input.value;
+
+    const validated = validateInput(inputValue);
+    if(validated === 1) getDataAndPopulate(inputValue);
+});
+
+button.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') {
+        const inputValue = input.value;
+
+        const validated = validateInput(inputValue);
+        if(validated === 1) getDataAndPopulate(inputValue);
+    }
+});

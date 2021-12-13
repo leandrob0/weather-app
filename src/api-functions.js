@@ -4,8 +4,8 @@ function processData(data) {
   const finalData = {
     location: `${data.name}, ${data.sys.country}`,
     condition: data.weather[0].description,
-    feelsLike: data.main.feels_like,
-    currentTemp: data.main.temp,
+    feelsLike: parseInt(data.main.feels_like, 10),
+    currentTemp: parseInt(data.main.temp, 10),
     wind: `${data.wind.speed} KPH`,
     humidity: `${data.main.humidity}%`,
   };
