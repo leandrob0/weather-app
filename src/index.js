@@ -8,6 +8,8 @@ import {
 } from "./page-structure";
 import { getCityTemp } from "./api-functions";
 
+// eslint-disable-next-line camelcase
+__webpack_nonce__ = 'c29tZSBjb29sIHN0cmluZyB3aWxsIHBvcCB1cCAxMjM=';
 // FOR NOW IT IS NOT POSSIBLE TO SEARCH FOR CITY AND COUNTRY, (TO BE ADDED LATER).
 
 async function getDataAndPopulate(location) {

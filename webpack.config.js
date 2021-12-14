@@ -8,11 +8,12 @@ module.exports = {
    filename: 'bundle.js',
    path: path.resolve(__dirname, 'dist'),
    clean: true,
+   publicPath: "/weather-app/"
  },
  plugins: [
     new HtmlWebpackPlugin({
       title: 'Weathery',
-      favicon: './src/favicon.ico'
+      favicon: './src/favicon.ico',
     }),
  ], 
  module: {
