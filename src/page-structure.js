@@ -2,22 +2,23 @@ import "./styles.css";
 
 function createSearchBar() {
   const body = document.querySelector("body");
-  const containerBar = document.createElement('div');
-  const form = document.createElement('form');
-  const button = document.createElement('button');
-  const input = document.createElement('input');
+  const containerBar = document.createElement("div");
+  const form = document.createElement("form");
+  const button = document.createElement("button");
+  const input = document.createElement("input");
 
-  containerBar.setAttribute('id','search-bar');
-  form.setAttribute('id','form-bar');
-  button.setAttribute('id','button-bar');
-  button.setAttribute('type','button');
-  containerBar.setAttribute('id','search-bar');
-  input.setAttribute('id','input-bar');
-  input.setAttribute('type','text');
-  input.setAttribute('minlength','2');
-  input.setAttribute('placeholder','Enter the city name');
+  containerBar.setAttribute("id", "search-bar");
+  form.setAttribute("id", "form-bar");
+  button.setAttribute("id", "button-bar");
+  button.setAttribute("type", "button");
+  containerBar.setAttribute("id", "search-bar");
+  input.setAttribute("id", "input-bar");
+  input.setAttribute("autocomplete", "off");
+  input.setAttribute("type", "text");
+  input.setAttribute("minlength", "2");
+  input.setAttribute("placeholder", "Enter the city name");
 
-  button.textContent = 'SEARCH';
+  button.textContent = "SEARCH";
 
   body.appendChild(form);
   form.appendChild(containerBar);
@@ -45,16 +46,16 @@ function createWeatherHtml() {
   bottom.classList.add("container-numbers");
   city.classList.add("city-text");
   condition.classList.add("condition-text");
-  degrees.setAttribute('id','degrees');
-  numberDegrees.setAttribute('id','number-degrees');
-  unitDegrees.setAttribute('id','unit-degrees');
-  details.setAttribute('id', 'details-weather');
+  degrees.setAttribute("id", "degrees");
+  numberDegrees.setAttribute("id", "number-degrees");
+  unitDegrees.setAttribute("id", "unit-degrees");
+  details.setAttribute("id", "details-weather");
   feelsLike.classList.add("detail");
-  feelsLike.setAttribute('id', 'feels-like');
+  feelsLike.setAttribute("id", "feels-like");
   wind.classList.add("detail");
-  wind.setAttribute('id', 'wind');
+  wind.setAttribute("id", "wind");
   humidity.classList.add("detail");
-  humidity.setAttribute('id', 'humidity');
+  humidity.setAttribute("id", "humidity");
 
   body.appendChild(container);
   container.appendChild(top);
@@ -71,22 +72,31 @@ function createWeatherHtml() {
 }
 
 function fillWeatherHtml(data) {
-  const city = document.querySelector('.city-text');
-  const condition = document.querySelector('.condition-text');
-  const numberDegrees = document.querySelector('#number-degrees');
-  const unitDegrees = document.querySelector('#unit-degrees');
-  const feelsLike = document.querySelector('#feels-like');
-  const wind = document.querySelector('#wind');
-  const humidity = document.querySelector('#humidity');
+  const city = document.querySelector(".city-text");
+  const condition = document.querySelector(".condition-text");
+  const numberDegrees = document.querySelector("#number-degrees");
+  const unitDegrees = document.querySelector("#unit-degrees");
+  const feelsLike = document.querySelector("#feels-like");
+  const wind = document.querySelector("#wind");
+  const humidity = document.querySelector("#humidity");
 
-  city.innerText = data.location;
+  // THIS LINES ARE ADDED IN THE CASE THE USER INPUTS A CONTINENT LIKE AFRICA.
+  let location;
+  if (data.location.includes(undefined)) {
+    location = data.location.split(",");
+    location.pop();
+  } else {
+    location = data.location;
+  }
+
+  city.innerText = location;
   condition.innerText = data.condition;
   numberDegrees.innerText = data.currentTemp;
-  unitDegrees.innerText = '°C';
+  unitDegrees.innerText = "°C";
   feelsLike.innerText = `Feels like: ${data.feelsLike} °C`;
   wind.innerText = `Wind: ${data.wind}`;
-  humidity.innerText =`Humidity: ${data.humidity}`;
+  humidity.innerText = `Humidity: ${data.humidity}`;
 }
 
 /* eslint-disable import/prefer-default-export */
-export { createWeatherHtml, createSearchBar , fillWeatherHtml };
+export { createWeatherHtml, createSearchBar, fillWeatherHtml };

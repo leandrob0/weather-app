@@ -20,13 +20,11 @@ async function getCityTemp(city) {
       { mode: "cors" }
     );
     const weatherData = await response.json();
-
-    // const unitUsed = (unit === 'metric') ? 'C' : 'F';
-    // const temperatura = `Temperatura en ${city}: ${ tempData.main.temp } °${unitUsed}`;
     const processedData = processData(weatherData);
+
     return processedData;
+    
   } catch (err) {
-    console.log(err);
     return undefined;
   }
 }
