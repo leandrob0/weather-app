@@ -8,8 +8,6 @@ import {
 } from "./page-structure";
 import { getCityTemp } from "./api-functions";
 
-// eslint-disable-next-line camelcase
-__webpack_nonce__ = 'c29tZSBjb29sIHN0cmluZyB3aWxsIHBvcCB1cCAxMjM=';
 // FOR NOW IT IS NOT POSSIBLE TO SEARCH FOR CITY AND COUNTRY, (TO BE ADDED LATER).
 
 async function getDataAndPopulate(location) {
@@ -25,13 +23,16 @@ async function getDataAndPopulate(location) {
 
 createSearchBar();
 createWeatherHtml();
+
+const input = document.querySelector("#input-bar");
+// do not reload on enter press.
+input.setAttribute("onkeydown", "return (event.keyCode!=13);");
+
 getDataAndPopulate("London");
 
 const button = document.querySelector("#button-bar");
-const input = document.querySelector("#input-bar");
 
 // this just makes the page not reload when pressing enter but cant make it work to search.
-input.setAttribute("onkeydown", "return (event.keyCode!=13);");
 
 button.addEventListener("click", () => {
   const inputValue = input.value;
