@@ -32,6 +32,8 @@ body {
 */
 .container-weather {
   overflow: auto;
+  opacity: 1;
+  transition: opacity 1s;
 }
 
 .container-texts {
