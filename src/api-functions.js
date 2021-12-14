@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import { fillWeatherHtml } from "./page-structure";
 
 function processData(data) {
   const finalData = {
@@ -22,9 +23,11 @@ async function getCityTemp(city) {
     const weatherData = await response.json();
     const processedData = processData(weatherData);
 
-    return processedData;
+    if (processedData) {
+      fillWeatherHtml(processedData);
+    }
   } catch (err) {
-    return undefined;
+    console.log("invalid city");
   }
 }
 

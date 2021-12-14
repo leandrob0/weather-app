@@ -32,8 +32,6 @@ body {
 */
 .container-weather {
   overflow: auto;
-  opacity: 1;
-  transition: opacity 1s;
 }
 
 .container-texts {
@@ -84,6 +82,19 @@ h3.condition-text {
   margin-left: 20px;
 }
 
+.fade-in {
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /*
 
   STYLING FOR THE SEARCH BAR.
@@ -131,16 +142,16 @@ input:focus {
 
 #button-bar {
   background-color: transparent;
-  
+
   border: none;
   border-radius: 10px;
 
   padding: 5px;
-  margin:0;
+  margin: 0;
 
   color: white;
 
-  transition: ease-in-out 0.2s
+  transition: ease-in-out 0.2s;
 }
 
 #button-bar:hover {
@@ -157,7 +168,7 @@ input:focus {
   #input-bar {
     width: 15rem;
   }
-  @media (max-width: 300px) { 
+  @media (max-width: 300px) {
     #input-bar {
       width: 5rem;
     }

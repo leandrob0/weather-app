@@ -72,6 +72,7 @@ function createWeatherHtml() {
 }
 
 function fillWeatherHtml(data) {
+  const container = document.querySelector(".container-weather");
   const city = document.querySelector(".city-text");
   const condition = document.querySelector(".condition-text");
   const numberDegrees = document.querySelector("#number-degrees");
@@ -79,6 +80,15 @@ function fillWeatherHtml(data) {
   const feelsLike = document.querySelector("#feels-like");
   const wind = document.querySelector("#wind");
   const humidity = document.querySelector("#humidity");
+
+  if (container.classList.contains("fade-in")) {
+    container.classList.remove("fade-in");
+    // eslint-disable-next-line no-unused-expressions
+    container.offsetWidth;
+    container.classList.add("fade-in");
+  } else {
+    container.classList.add("fade-in");
+  }
 
   // THIS LINES ARE ADDED IN THE CASE THE USER INPUTS A CONTINENT LIKE AFRICA.
   let location;
